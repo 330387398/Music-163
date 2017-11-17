@@ -1,0 +1,429 @@
+/*--------------------------------------------------reset css--------------------------------------------------*/
+
+*{ margin: 0; padding: 0; box-sizing: border-box; font-family: Arial; }
+*::before, *::after{ box-sizing: border-box; }
+body{ display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
+
+
+/*---------------------------------------------------Loading---------------------------------------------------*/
+
+.loading{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    background: white;
+}
+.spinner{
+    position: relative;
+    top: 50%;
+    margin: 0 auto;
+    width: 50px;
+    height: 60px;
+    font-size: 10px;
+    text-align: center;
+    transform: translateY(-50%);
+}
+@-webkit-keyframes stretchdelay{
+    0%, 40%, 100% { -webkit-transform: scaleY(0.4); } 
+    20% { -webkit-transform: scaleY(1.0); }
+}
+@keyframes stretchdelay{
+    0%, 40%, 100% { transform: scaleY(0.4); }
+    20% { transform: scaleY(1.0); }
+}
+.spinner > div{
+    display: inline-block;
+    width: 6px;
+    height: 100%;
+    background-color: #d33a31;
+    -webkit-animation: stretchdelay 1.2s infinite ease-in-out;
+    animation: stretchdelay 1.2s infinite ease-in-out;
+}
+.spinner .rect2{
+    -webkit-animation-delay: -1.1s;
+    animation-delay: -1.1s;
+}
+.spinner .rect3{
+    -webkit-animation-delay: -1.0s;
+    animation-delay: -1.0s;
+}
+.spinner .rect4{
+    -webkit-animation-delay: -0.9s;
+    animation-delay: -0.9s;
+}
+.spinner .rect5{
+    -webkit-animation-delay: -0.8s;
+    animation-delay: -0.8s;
+}
+
+
+/*--------------------------------------------------唱片部分---------------------------------------------------*/
+
+.background{
+	position: absolute;
+    top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: -1;
+    background-image: url(#);
+	background-repeat: no-repeat;
+	background-size: auto 100%;
+    background-position: 50%;
+    -webkit-transform: scale(1.5);
+    transform: scale(1.5);
+    -webkit-transform-origin: center top;
+    transform-origin: center top;    
+    transition: opacity .3s linear;
+}
+.background::after{
+	content: '';
+	position: absolute;
+    top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+    background-color: rgba(0,0,0,.5);
+}
+
+.disc-container{
+	padding-top: 63px;
+}
+.disc-container > .disc{
+	position: relative;
+	margin: 0 auto;
+    width: 248px;
+    height: 248px;
+}
+.disc-container > .disc > .disc-head{
+    position: absolute;    
+    top: -63px;
+    left: 107px;
+    z-index: 4;
+    width: 84px;
+    height: 122px;
+	background: url(https://s3.music.126.net/m/s/img/needle.png?702cf6d95f29e2e594f53a3caab50e12) no-repeat;
+    background-size: contain;    
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    transition: .5s;
+}
+.disc-container > .disc > .disc-head.paused{
+    transform: rotate(-20deg);
+}
+.disc-container > .disc > .record{
+	width: 100%;
+    height: 100%;
+}
+.disc-container > .disc > .record::before{
+    content: '';
+    position: absolute; 
+    top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+    z-index: 2;
+    background: url(https://s3.music.126.net/m/s/img/disc.png?d3bdd1080a72129346aa0b4b4964b75f) no-repeat;
+    background-size: contain;
+}
+@-webkit-keyframes circling {
+    0% { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(1turn); }
+}
+@keyframes circling {
+    0% { transform: rotate(0deg); }
+    to { transform: rotate(1turn); }
+}
+.disc-container > .disc > .record > .circle{
+    position: absolute; 
+    top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+    z-index: 3;    
+	background: url(https://s3.music.126.net/m/s/img/disc_light.png?2bb24f3fd11569809b817b4988f12bc7) no-repeat;
+    background-size: contain;
+    -webkit-animation: circling 20s infinite linear;
+    animation: circling 20s infinite linear;
+}
+.disc-container > .disc > .record > .cover{
+	position: absolute;
+	top: 50%;
+    left: 50%;
+    z-index: 1;
+    margin: -75px 0 0 -75px;
+    width: 150px;
+    height: 150px;
+    background: url(https://s3.music.126.net/m/s/img/disc_default.png?7c9b3adc16f5485c2bfbe8a540534188) no-repeat;
+    background-size: contain;
+    border-radius: 50%;
+    overflow: hidden;
+     -webkit-animation: circling 20s infinite linear;
+    animation: circling 20s infinite linear;
+}
+.disc-container > .disc > .record > .circle.paused,
+.disc-container > .disc > .record > .cover.paused{
+    animation-play-state: paused;
+}
+.disc-container > .disc > .record > .cover > img{
+	width: 100%;
+    vertical-align: middle;
+}
+.disc-container > .disc > span{
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 5;
+    width: 50px;
+    height: 50px;
+    background: rgba(0,0,0,.5);
+    border: 1px solid white;
+    border-radius: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+}
+.disc-container > .disc > span.active{
+    display: block;
+}
+.disc-container > .disc > span > svg{
+    position: absolute;
+    top: 10px;
+    left: 4px;
+    width: 90%;
+    height: 58%;
+    fill: white;
+}
+.disc-container > .disc .pause{
+    left: 2px;
+}
+
+
+/*--------------------------------------------------歌词部分---------------------------------------------------*/
+
+.song-description{
+	margin-top: 25px;
+	padding: 0 35px;
+}
+.song-description > h2{
+	font-size: 15px;
+	color: #fefefe;
+	font-weight: 400;
+	line-height: 1.1;
+	text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.song-description > h2 > span:nth-child(2){
+	font-size: 13px;
+    color: hsla(0,0%,100%,.6);
+}
+.song-description > div{
+	margin-top: 14px;
+	height: 67px;	        
+    font-size: 13px;
+	color: hsla(0,0%,100%,.6);
+    line-height: 1.5;
+    text-align: center;
+    overflow: hidden;
+}
+.song-description > div > div{
+    transform: translateY(0);
+	transition: transform .3s ease-out,-webkit-transform .3s ease-out;
+}
+.song-description > div > div > p{
+	padding-bottom: 5px;
+}
+.song-description > div > div > p.active{
+    color: white;
+}
+
+
+/*---------------------------------------------------footer----------------------------------------------------*/
+
+body > .links{
+	position: absolute;
+    right: 0;
+    bottom: 20px;
+    left: 0;
+}
+body > .links > div{
+	display: flex;
+	margin: 0 auto;
+    padding: 0 35px;
+}
+body > .links > div > span{
+    display: block;
+    margin-left: 12px;
+	padding: 0 6px;
+    width: 50%;
+	height: 36px;
+	font-size: 15px;
+    color: #fff;
+    line-height: 36px;
+    text-align: center;
+    background-color: #d43b32;
+    border: 1px solid #d43b32;
+    border-radius: 4px;
+}
+body > .links > div > span:first-child{
+    margin-left: 0;
+	color: #d43b32;
+    background-color: transparent;
+}
+
+
+/*--------------------------------------------------媒体查询---------------------------------------------------*/
+
+@media screen and (min-width: 360px) {
+    .disc-container {
+        padding-top: 70px;
+    }
+    .disc-container > .disc {
+        width: 296px;
+        height: 296px;
+    }
+    .disc-container > .disc > .disc-head {
+        top: -70px;
+        left: 133px;
+        width: 96px;
+        height: 137px;
+        background: url(https://s3.music.126.net/m/s/img/needle-ip6.png?be4ebbeb6befadfcae75ce174e7db862) no-repeat;
+        background-size: contain;
+    }
+    .disc-container > .disc > span {
+        width: 56px;
+        height: 56px;
+    }
+    .disc-container > .disc > span > svg {
+        top: 11px;
+        left: 5px;
+    }
+    .disc-container > .disc > span > svg.pause {
+        left: 3px;
+    }
+    .disc-container > .disc > .record::before {
+        background: url(https://s3.music.126.net/m/s/img/disc-ip6.png?69796123ad7cfe95781ea38aac8f2d48) no-repeat;
+        background-size: contain;
+    }
+    .disc-container > .disc > .record > .cover {
+        margin: -92px 0 0 -92px;
+        width: 184px;
+        height: 184px;
+    }
+    .disc-container > .disc > .record > .circle {
+        background: url(https://s3.music.126.net/m/s/img/disc_light-ip6.png?996fc8a2bc62e1ab3f51f135fc459577) no-repeat;
+        background-size: contain;
+    }
+    body > .links > div {
+        max-width: 362px;
+    }
+    body > .links > div > span {
+        -webkit-box-flex: 1;
+        flex: 1 1 auto;
+        height: 42px;
+        line-height: 42px;
+        font-size: 18px;
+    }
+}
+
+@media screen and (min-width: 375px) {
+    .song-description > div {
+        height: 88px;
+    }
+    .song-description > h2 {
+        font-size: 18px;
+    }
+    .song-description > h2 > span:nth-child(2) {
+        font-size: 16px;
+    }
+    .song-description > div > div > p {
+        padding-bottom: 8px;
+        font-size: 16px;
+    }
+}
+
+@media screen and (min-width: 414px) {
+    .disc-container {
+        padding-top: 80px;
+    }
+    .disc-container > .disc {
+        width: 342px;
+        height: 342px;
+    }
+    .disc-container > .disc > .disc-head {
+        top: -80px;
+        left: 150px;
+        width: 110px;
+        height: 157px;
+        background: url(https://s3.music.126.net/m/s/img/needle-plus.png?994aa910ce3e4d242eb7076620b0e502) no-repeat;
+        background-size: contain;
+    }
+    .disc-container > .disc > span {
+        width: 65px;
+        height: 65px;
+    }
+    .disc-container > .disc > span > svg {
+        top: 13px;
+        left: 6px;
+    }
+    .disc-container > .disc > span > svg.pause {
+        left: 3px;
+    }
+    .disc-container > .disc > .record::before {
+        background: url(https://s3.music.126.net/m/s/img/disc-plus.png?b700b62e1971b351dcb8b8ce1c9ceea3) no-repeat;
+        background-size: contain;
+    }
+    .disc-container > .disc > .record > .cover {
+        margin: -106px 0 0 -106px;
+        width: 212px;
+        height: 212px;
+    }
+    .disc-container > .disc > .record > .circle {
+        background: url(https://s3.music.126.net/m/s/img/disc_light-plus.png?4392c8c9a8a33d4b2b2c33d3995503c9) no-repeat;
+        background-size: contain;
+    }
+    .song-description {
+        margin-top: 15px;
+    }
+    .song-description > div {
+        margin-top: 6px;
+        height: 72px;
+    }
+    .song-description > div > div > p {
+        padding-bottom: 0;
+    }
+    body > .links > div {
+        max-width: 390px;
+    }
+    body > .links > div > span {
+        -webkit-box-flex: 1;
+        flex: 1 1 auto;
+        height: 47px;
+        line-height: 47px;
+        font-size: 20px;
+    }
+}
+
+@media screen and (min-width: 606px) {
+    body {
+        overflow-y: scroll;
+    }
+    .background {
+        background-size: 100% auto;
+    }
+    .song-description > div {
+        height: 24px;
+    }
+    .song-description > div > div > p {
+        padding-bottom: 8px;
+    }
+    body > .links {
+        position: static;
+        margin-top: 20px;
+    }
+}

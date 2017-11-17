@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title></title>
+	<link rel="shortcut icon" type="image/x-icon" href="https://s1.music.126.net/music.ico?v1">
+	<link rel="stylesheet" type="text/css" href="../css/song.css">
+</head>
+<body>
+	<!--歌曲加载完成前的Loading动画-->
+	<div class="loading">
+		<div id="spinner" class="spinner">
+			<div class="rect1"></div>
+			<div class="rect2"></div>
+			<div class="rect3"></div>
+			<div class="rect4"></div>
+			<div class="rect5"></div>
+		</div>
+	</div>
+
+	<!--唱片部分-->
+	<div class="background"></div>
+	<div class="disc-container">
+		<div class="disc">
+			<div class="disc-head"></div>
+			<div class="record">
+				<div class="circle"></div>
+				<div class="cover">
+					<img src="#">
+				</div>
+			</div>
+			<span class="playbtn"><svg><use xlink:href="#icon-bofang"></use></svg></span>
+			<span class="pausebtn active"><svg class="pause"><use xlink:href="#icon-bofangzanting"></use></svg></span>
+		</div>
+	</div>
+
+	<!--歌词部分-->
+	<div class="song-description">
+		<h2><span></span> - <span></span></h2>
+		<div>
+			<div class="lyric"></div>
+		</div>
+	</div>
+
+	<!--footer-->
+	<div class="links">
+		<div>
+			<span>打 开</span>
+			<span>下 载</span>
+		</div>
+	</div>
+	<script src="https://at.alicdn.com/t/font_444134_bu6zf3frnprgrpb9.js"></script>
+	<script src="../vendors/jquery.min.js"></script>
+	<script src="../vendors/av-min.js"></script>
+	<script src="../js/song.js"></script>
+</body>
+</html>

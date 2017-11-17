@@ -1,0 +1,581 @@
+/*--------------------------------------------------reset css--------------------------------------------------*/
+
+*{ margin: 0; padding: 0; box-sizing: border-box; font-family: Arial; }
+*::before, *::after{ box-sizing: border-box; }
+ul, ol, li{ list-style: none; }
+body{ font: 14px/1.5 Helvetica,sans-serif; background-color: #f8f8f8; }
+
+
+/*---------------------------------------------------header----------------------------------------------------*/
+
+.header{
+	position: relative;
+    padding: 30px 10px 30px 15px;
+    overflow: hidden;
+}
+.header > .background{
+	position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+	background-image: url();
+	background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50%;
+    -webkit-filter: blur(20px);
+    filter: blur(20px);
+    -webkit-transform: scale(1.5);
+    transform: scale(1.5);
+}
+.header > .background::after{
+	content: '';
+	position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0,0,0,.25);
+}
+.header > .cover{
+    display: flex;
+    position: relative;
+    z-index: 2;
+}
+.header > .cover > .picture{
+	position: relative;
+    width: 114px;
+    height: 114px;
+    background-color: #e2e2e3;
+}
+.header > .cover > .picture > img{
+	width: 100%;
+    vertical-align: middle;
+}
+.header > .cover > .picture > span{
+	position: absolute;
+	top: 10px;
+    left: 0;
+    z-index: 3;    
+    padding: 0 8px;
+    height: 17px;
+    font-size: 9px;
+    color: #fff;
+    line-height: 17px;
+    text-align: center;
+    background-color: rgba(217,48,48,.8);
+    border-top-right-radius: 17px;
+    border-bottom-right-radius: 17px;
+}
+.header > .cover > .picture > i{
+	position: absolute;
+	top: 0;
+    right: 2px;
+    z-index: 3;
+    padding-left: 15px;
+    font-size: 12px;
+    color: #fff;
+    line-height: 18px;
+    font-style: normal;
+    text-shadow: 1px 0 0 rgba(0,0,0,.15);
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMiAyMCI+PGcgb3BhY2l0eT0iLjE1Ij48cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGZpbGw9IiMwNDAwMDAiIGQ9Im0yMiAxNi43NzdjMCAxLjIzMy0xLjEyMSAyLjIzMy0yLjUwNiAyLjIzMy0xLjM4NCAwLTIuNTA2LTEtMi41MDYtMi4yMzN2LTIuNTUzYzAtMS4yMzQgMS4xMjItMi4yMzMgMi41MDYtMi4yMzMuMTc0IDAgLjM0My4wMTcuNTA2LjA0NnYtMS4zN2gtLjAzM2MuMDE3LS4yMi4wMzMtLjQ0MS4wMzMtLjY2NiAwLTQuNDE4LTMuNTgyLTgtOC04LTQuNDE4IDAtOCAzLjU4Mi04IDggMCAuMjI1LjAxNi40NDYuMDM0LjY2NmgtLjAzNHYxLjM3Yy4xNjMtLjAyOS4zMzMtLjA0Ni41MDUtLjA0NiAxLjM4NCAwIDIuNTA2Ljk5OSAyLjUwNiAyLjIzM3YyLjU1M2MwIDEuMjMzLTEuMTIyIDIuMjMzLTIuNTA2IDIuMjMzcy0yLjUwNS0uOTk5LTIuNTA1LTIuMjMzdi0yLjU1M2MwLS4yNTguMDU5LS41MDEuMTQ4LS43My0uMDg1LS4xNDgtLjE0OC0uMzEtLjE0OC0uNDkzdi0yLjY2N2MwLS4wMjMuMDEyLS4wNDMuMDEzLS4wNjctLjAwNC0uMDg4LS4wMTMtLjE3Ni0uMDEzLS4yNjYgMC01LjUyMyA0LjQ3Ny0xMCAxMC0xMCA1LjUyMyAwIDEwIDQuNDc3IDEwIDEwIDAgLjA5LS4wMDkuMTc4LS4wMTQuMjY2LjAwMi4wMjQuMDE0LjA0NC4wMTQuMDY3djJjMCAuMzA2LS4xNDUuNTY5LS4zNi43NTMuMjI0LjMzNC4zNi43Mi4zNiAxLjEzOHYyLjU1MiIvPjwvZz48cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGZpbGw9IiNmZmYiIGQ9Im0yMCAxNi43NzdjMCAxLjIzMy0xLjEyMSAyLjIzMy0yLjUwNiAyLjIzMy0xLjM4NCAwLTIuNTA2LTEtMi41MDYtMi4yMzN2LTIuNTUzYzAtMS4yMzQgMS4xMjItMi4yMzMgMi41MDYtMi4yMzMuMTc0IDAgLjM0My4wMTcuNTA2LjA0NnYtMS4zN2gtLjAzM2MuMDE3LS4yMi4wMzMtLjQ0MS4wMzMtLjY2NiAwLTQuNDE4LTMuNTgyLTgtOC04LTQuNDE4IDAtOCAzLjU4Mi04IDggMCAuMjI1LjAxNi40NDYuMDM0LjY2NmgtLjAzNHYxLjM3Yy4xNjMtLjAyOS4zMzMtLjA0Ni41MDUtLjA0NiAxLjM4NCAwIDIuNTA2Ljk5OSAyLjUwNiAyLjIzM3YyLjU1M2MwIDEuMjMzLTEuMTIyIDIuMjMzLTIuNTA2IDIuMjMzcy0yLjUwNS0uOTk5LTIuNTA1LTIuMjMzdi0yLjU1M2MwLS4yNTguMDU5LS41MDEuMTQ4LS43My0uMDg1LS4xNDgtLjE0OC0uMzEtLjE0OC0uNDkzdi0yLjY2N2MwLS4wMjMuMDEyLS4wNDMuMDEzLS4wNjctLjAwNC0uMDg4LS4wMTMtLjE3Ni0uMDEzLS4yNjYgMC01LjUyMyA0LjQ3Ny0xMCAxMC0xMCA1LjUyMyAwIDEwIDQuNDc3IDEwIDEwIDAgLjA5LS4wMDkuMTc4LS4wMTQuMjY2LjAwMi4wMjQuMDE0LjA0NC4wMTQuMDY3djJjMCAuMzA2LS4xNDUuNTY5LS4zNi43NTMuMjI0LjMzNC4zNi43Mi4zNiAxLjEzOHYyLjU1MiIvPjwvc3ZnPg==);
+	background-repeat: no-repeat;
+	background-size: 11px 10px;
+	background-position: 0;
+}
+.header > .cover > .picture::after{
+	content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+    height: 18px;
+    background-image: linear-gradient(90deg,transparent,rgba(0,0,0,.2));
+}
+.header > .cover > .title{
+	-webkit-box-flex: 1;
+    flex: 1 1 auto;
+    margin-left: 16px;
+    width: 1%;
+}
+.header > .cover > .title > h2{
+	padding-top: 1px;
+	height: 45px;
+    font-size: 17px;
+    color: #fefefe;
+    line-height: 1.3;
+    font-weight: normal;
+    display: -webkit-box;
+    -webkit-box-pack: center;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
+    word-break: break-all;
+    white-space: normal;
+	overflow: hidden;
+    text-overflow: ellipsis;
+}
+.header > .cover > .title > a{
+	display: block;
+    position: relative;
+    margin-top: 20px;
+    color: hsla(0,0%,100%,.7);
+    word-break: normal;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-decoration: none;
+}
+.header > .cover > .title > a > div{
+    display: inline-block;
+    position: relative;
+    margin-right: 5px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+.header .title > a > div > img{
+	width: 100%;
+	border-radius: 50%;
+	vertical-align: middle;
+}
+.header .title > a > div > span{
+	position: absolute;
+    right: -5px;
+    bottom: 0;
+    width: 12px;
+    height: 12px;
+    background-image: url(https://s3.music.126.net/m/s/img/usericn_2x.png?6423c0681bfb3358d5c684c9b998e412);
+    background-repeat: no-repeat;
+    background-size: 75px auto;
+    background-position: -40px 0;
+}
+
+
+/*-------------------------------------------------标签和简介--------------------------------------------------*/
+
+.introduce{
+	position: relative;
+    margin: 0 10px 0 15px;
+    padding-top: 10px;
+    color: #666;
+    line-height: 19px;
+}
+.introduce > .label{
+	margin: 0 -10px 10px 0;
+    line-height: 20px;
+}
+.introduce > .label > em{
+	position: relative;
+	display: inline-block;
+    margin-right: 10px;
+    padding: 1px 8px;
+    font-size: 12px;
+    line-height: 20px;
+    font-weight: normal;
+    font-style: normal;     
+}
+.introduce > .label > em::after{
+	content: '';
+	position: absolute;
+	top: 0;
+    left: 0;
+    z-index: 2;
+	width: 200%;
+    height: 200%;
+	border: 1px solid rgba(0,0,0,.1);
+    border-radius: 99px;
+    -webkit-transform: scale(.5);
+    transform: scale(.5);
+    -webkit-transform-origin: top left;
+    transform-origin: top left;
+    pointer-events: none; 
+}
+.introduce > .content{
+	position: relative;
+    padding-bottom: 18px;
+    line-height: 19px;
+}
+.introduce > .content > div{
+	overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
+    word-break: break-all;
+    white-space: normal;
+}
+.introduce > .content > span{
+	position: absolute;
+	right: 0;
+    bottom: 3px;
+    z-index: 3;
+    width: 15px;
+    height: 15px;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAANCAQAAAAZZWZbAAAAkElEQVR4AY2RtQEDMQxFX+D4RsgA6cN4XGr/cQJyEzD9yvCeZIAVWxbEJKNhDQ3CiUUE3iE0UNAjnFniS674nVQnqlw8iiHuJN/+hQRbzBluJP8tryQWfLAXy2j/61Aa3H7clOb7pJSMFtyipABUip/9T55yR2hIqZnifihRpVX8aMGtyg1BODAnMglHdnb8CYQbEwGgBxiKAAAAAElFTkSuQmCC);
+	background-repeat: no-repeat;
+	background-size: 12px auto;
+	background-position: 50%;
+}
+.introduce > .content > span.active{
+	transform: rotate(180deg);
+}
+
+
+/*--------------------------------------------------歌曲列表---------------------------------------------------*/
+
+.playlist > h3{
+	padding: 0 10px;
+	height: 23px;
+	font-size: 12px;
+    color: #666;
+	line-height: 23px;
+    font-weight: normal;
+    background-color: #eeeff0;    
+}
+
+/*Loading动画*/
+.spinner{
+    margin: 100px auto;
+    width: 50px;
+    height: 60px;
+    font-size: 10px;
+    text-align: center;
+}
+@-webkit-keyframes stretchdelay{
+  0%, 40%, 100% { -webkit-transform: scaleY(0.4); } 
+  20% { -webkit-transform: scaleY(1.0); }
+}
+@keyframes stretchdelay{
+  0%, 40%, 100% { transform: scaleY(0.4); }
+  20% { transform: scaleY(1.0); }
+}
+.spinner > div{
+    display: inline-block;
+    width: 6px;
+    height: 100%;
+    background-color: #d33a31;
+    -webkit-animation: stretchdelay 1.2s infinite ease-in-out;
+    animation: stretchdelay 1.2s infinite ease-in-out;
+}
+.spinner .rect2{
+    -webkit-animation-delay: -1.1s;
+    animation-delay: -1.1s;
+}
+.spinner .rect3{
+    -webkit-animation-delay: -1.0s;
+    animation-delay: -1.0s;
+}
+.spinner .rect4{
+    -webkit-animation-delay: -0.9s;
+    animation-delay: -0.9s;
+}
+.spinner .rect5{
+    -webkit-animation-delay: -0.8s;
+    animation-delay: -0.8s;
+}
+
+/*歌曲列表*/
+#hotSongs > li{
+	display: flex;
+	position: relative;
+}
+#hotSongs > li > .number{
+    display: flex;
+    width: 40px;
+    font-size: 17px;
+    color: #999;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+}
+#hotSongs > li > div:nth-child(2){
+    display: flex;
+    position: relative;
+    width: calc(100% - 40px);
+    height: 55px;
+    font-size: 12px;
+    color: #888;
+    align-items: center;
+}
+#hotSongs > li > div:nth-child(2)::after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -50%;
+    width: 200%;
+    height: 1px;
+    background: rgba(0,0,0,.1);
+    transform: scale(.5);
+}
+#hotSongs > li > div:nth-child(2) > div:first-child{
+	width: calc(100% - 42px);
+	overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break: normal;
+}
+#hotSongs > li h3{
+	font-size: 17px;
+	color: #333;
+	font-weight: normal;
+	overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break: normal;
+}
+#hotSongs > li span{
+	margin-left: 4px;
+}
+#hotSongs > li h5{
+    display: none;
+}
+#hotSongs > li i{
+	display: none;
+	margin-right: 4px;
+	background: url(https://s3.music.126.net/m/s/img/index_icon_2x.png?5207a28c3767992ca4bb6d4887c) no-repeat;
+	background-size: 166px 97px;
+	width: 12px;
+	height: 8px;
+}
+#hotSongs > li i.block{
+	display: inline-block;
+}
+#hotSongs > li p{
+	display: inline;
+}
+#hotSongs > li > div:nth-child(2) > div:nth-child(2){
+	display: flex;
+	padding: 0 10px;
+    -webkit-box-align: center;
+    align-items: center;
+}
+#hotSongs .playButton{
+	display: inline-block;
+	background: url(https://s3.music.126.net/m/s/img/index_icon_2x.png?5207a28c3767992ca4bb6d4887c) no-repeat;
+	background-size: 166px 97px;
+	background-position: -24px 0;
+	width: 22px;
+	height: 22px;
+}
+
+
+/*--------------------------------------------------评论部分---------------------------------------------------*/
+
+.comment{
+	padding-bottom: 66px;
+}
+.comment > .comment-title > h3{
+	padding: 0 10px;
+	height: 23px;
+	font-size: 12px;
+    color: #666;
+    line-height: 23px;
+    font-weight: normal;
+    background-color: #eeeff0;
+}
+.comment > .comment-title > ul > li{
+	display: -webkit-box;
+    display: flex;
+    padding: 8px 0 0 10px;
+}
+.comment > .comment-title > ul > li > .head{
+	position: relative;
+	width: 30px;
+    -webkit-box-flex: 0;
+    flex: 0 0 auto;
+}
+.comment .head > img{
+	width: 100%;
+	border-radius: 50%;
+}
+.comment .head > span{
+	position: absolute;
+    right: -5px;
+    top: 18px;
+    width: 12px;
+    height: 12px;
+    background-image: url(https://s3.music.126.net/m/s/img/usericn_2x.png?6423c0681bfb3358d5c684c9b998e412);
+    background-repeat: no-repeat;
+    background-size: 75px auto;
+    background-position: -40px 0;
+}
+.comment > .comment-title > ul > li > .content{
+	position: relative;
+	-webkit-box-flex: 1;
+    flex: 1 1 auto;
+    margin-left: 10px;
+    padding-right: 10px;
+    width: 1%;
+}
+.comment .content::after{
+	content: '';
+	position: absolute;
+	top: 0;
+    left: 0;
+    z-index: 2;
+	width: 200%;
+    height: 200%;
+    -webkit-transform: scale(.5);
+    transform: scale(.5);
+    -webkit-transform-origin: top left;
+    transform-origin: top left;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    pointer-events: none;
+}
+.comment .content > .name{
+	display: -webkit-box;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+}
+.comment .content > .name > .left{
+	-webkit-box-flex: 1;
+    flex: 1 1 auto;
+    width: 1%;
+    line-height: 1.2;
+}
+.comment .content > .name > .left > div:first-child{
+	padding-top: 2px;
+    font-size: 13px;
+    color: #666;
+}
+.comment .content > .name > .left > div:nth-child(2){
+	margin-top: 2px;
+    font-size: 12px;
+    color: #999;
+}
+.comment .content > .name > .right{
+    -webkit-box-flex: 0;
+    flex: 0 0 auto;
+    margin-left: 10px;
+    text-align: right;
+}
+.comment .content > .name > .right > span{
+	padding: 3px 20px 0 0;
+	font-size: 12px;
+    color: #666;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAAe1BMVEUAAABmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmY+mZAPAAAAKHRSTlMA9hE1BFrVF/Kx7tCavskgLQraZunk36pFflM5KXdfuKGEP5WMwm1NioCxWQAAAgtJREFUOMuNlOmSnDAMhDHYA9iDue/7nH7/J4yBJJvUzo7df6yCr6SW7JL1XbTdJM/2PqKWVjTsBZTk3OlhO5XgRcGR16EW7iZCJtZsBcSgNeLsKBi1oifIamthgUerzpSg1PpoHxCROpsCo6PzUSWQFywQLBqYnhm7Gx5bDez2GabTK0vgR7r+nl42uyoYMn2DjYRk9j2NSTO6uFbM9Sp6YI0/t7eM4P3J2DNIfX+LbfqWVY4xVmcUTeBz6IZRWzXs1b3hnS1DMtinHRaAyNIfg12Kh/Tn6n9LdvR65si38JpgneNf8XIIL0tu5CgtbBUE2RbRGxaex5XyRAaB4MAjdZW5vgxO7SIDRN/d5mInnesjZc2rWtq26nfAZ1Y3J39LiTINv1yF7ldX9rCTfLIOxRYiIYBYh+7HwdpHDmH5p/eqkSB19+nClgTcSiAbasUlSKN5uQrmKDtVxQdhn1jKChQWwVNVd3VwWGcksDwzeJm8YjWFmUBwGMK0V9xiCNsrUIdmMG195ENsBtuDIEFFzeBwy/gaGcLOiCRVmAF8b6mFmsFxmsHvLDM42jy+uWYwfQVEnJYtgjXWZT5ylC01y+w+gdk+owyjmjYtQV4/3wiy9AoD8Ik5VQBSO2/VpupfuVxwX8ArHokH5I/3ysm9V5W6WUIjbzzc3wNva8kJ4Zx75K283P+zTX4B3yM72UWWyAUAAAAASUVORK5CYII=) 100% 0 no-repeat;
+    background-size: 15px;
+}
+.comment .content > .text{
+	position: relative;
+    margin-top: 8px;
+    padding-bottom: 8px;
+    color: #333;
+    word-wrap: break-word;
+    word-break: break-all;
+    white-space: normal;
+}
+.comment > .more{
+	position: relative;
+	padding: 18px 0;
+    line-height: 1;
+    text-align: center;
+}
+.comment > .more > span{
+	display: inline-block;
+	padding-right: 14px;
+    color: #999;
+    background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNCAyMiI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBmaWxsPSJub25lIiBzdHJva2U9IiNjY2MiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBkPSJtMSAxbDEwIDEwLTEwIDEwIi8+PC9zdmc+) 100% no-repeat;
+    background-size: 7px 12px;
+}
+
+
+/*---------------------------------------------------footer----------------------------------------------------*/
+
+.footer{
+	position: fixed;
+	right: 0;
+	bottom: 0;
+	left: 0;
+    z-index: 5;
+    padding: 7px 0;
+    background-color: #fff;
+}
+.footer::after{
+	content: '';
+	position: absolute;
+	top: 0;
+    left: 0;
+	z-index: 2;
+	width: 200%;
+    height: 200%;
+	border-top: 1px solid rgba(0,0,0,.1);
+	-webkit-transform: scale(.5);
+    transform: scale(.5);
+    -webkit-transform-origin: top left;
+    transform-origin: top left;
+	pointer-events: none;
+}
+.footer > div{
+	display: flex;
+	margin: 0 auto;
+    padding: 0 35px;
+    max-width: 390px;
+}
+.footer > div > span{
+	-webkit-box-flex: 1;
+    flex: 1 1 auto;
+    margin-left: 12px;
+    padding: 0 6px;
+	width: 1%;
+	height: 36px;
+	font-size: 15px;
+    color: #fff;
+    line-height: 36px;
+    text-align: center;
+    background-color: #d43b32;
+    border: 1px solid #d43b32;
+    border-radius: 4px;
+}
+.footer > div > span:first-child{
+	margin: 0;
+    color: #d43b32;
+    background-color: transparent;
+}
+
+
+/*--------------------------------------------------媒体查询---------------------------------------------------*/
+
+@media screen and (min-width: 360px) {
+	.header > .cover > .picture{
+	    width: 126px;
+	    height: 126px;
+	}
+	.footer > div{
+		max-width: 362px;
+	}
+	.footer > div > span{
+		height: 42px;
+	    line-height: 42px;
+	    font-size: 18px;
+	}
+}
+
+@media screen and (min-width: 414px) {
+	.header > .cover > .picture{
+	    width: 145px;
+	    height: 145px;
+	}
+	.footer > div{
+		max-width: 390px;
+	}
+	.footer > div > span{
+		height: 47px;
+	    line-height: 47px;
+	    font-size: 20px;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.header > .cover > .picture{
+	    width: 200px;
+	    height: 200px;
+	}
+}
