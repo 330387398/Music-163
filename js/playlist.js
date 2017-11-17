@@ -1,7 +1,7 @@
 
 //通过ajax获取后台数据，插入并渲染页面
 let listId = location.search.substr(1)
-$.get('https://oxsq8ic50.bkt.clouddn.com/G-163-playlist.json').then(function(data){
+$.get('https://330387398.github.io/Music-163/json/playlist.json').then(function(data){
 	//根据url的传值，找到json文件中对应的对象，提取数据
 	let array = [data.object0,data.object1,data.object2,data.object3,data.object4,data.object5]
 	let object = array[listId]
