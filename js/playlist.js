@@ -181,7 +181,7 @@ if($newDate.getMonth() > 8){
 let $good = $('.right span')
 $good.on('click',function(){
 	if(!$(this).hasClass('active')){
-		$(this).css({'background':'url(https://oxsq8ic50.bkt.clouddn.com/G-163-playlist-dianzanhou.png) 100% 0 no-repeat','background-size':'15px'}).addClass('active')
+		$(this).css({'background':'url(https://330387398.github.io/Library/163-playlist-dianzanhou.png) 100% 0 no-repeat','background-size':'15px'}).addClass('active')
 		if(!$(this).html()){
 			$(this).html('1')
 		}else{
